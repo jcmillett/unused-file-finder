@@ -91,6 +91,7 @@ find "$CODE_DIR" \
   -not -path "*/node_modules/*" \
   -not -path "*/automation/*" \
   -not -path "*/ng-mobile/*" \
+  -not -path "*/target/*" \
   -not -path "*/dist/*" > "$ALL_FILES_FILE"
 
 # Check if any files were found
@@ -122,6 +123,7 @@ if rg -Ff "$FILENAMES_FILE" "$CODE_DIR" --no-ignore \
    --glob '!**/node_modules/**' \
    --glob '!**/automation/**' \
    --glob '!**/ng-mobile/**' \
+   --glob '!**/target/**' \
    --glob '!**/dist/**' > "$REFERENCES_FILE" 2>/dev/null; then
     REF_COUNT=$(wc -l < "$REFERENCES_FILE")
     echo "📎 Found $REF_COUNT references to .$FILE_TYPE files"
